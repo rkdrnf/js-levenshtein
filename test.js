@@ -1,13 +1,13 @@
-import test from 'ava';
-import levenshtein from './';
+const test = require('ava');
+const levenshtein = require('./');
 
 test(t =>
      {
-       t.is(levenshtein('a', 'b'), 1);
+       t.is(levenshtein('This is a base sentence for TM matching algorithm test.'.split(' '), 'This is a replaced sentence for TM matching algorithm test.'.split(' ')), 1);
        t.is(levenshtein('ab', 'ac'), 1);
        t.is(levenshtein('ac', 'bc'), 1);
        t.is(levenshtein('abc', 'axc'), 1);
-       t.is(levenshtein('kitten', 'sitting'), 3);
+       t.is(levenshtein('kitten'.split(' '), 'sitting'.split(' ')), 3);
        t.is(levenshtein('xabxcdxxefxgx', '1ab2cd34ef5g6'), 6);
        t.is(levenshtein('cat', 'cow'), 2);
        t.is(levenshtein('xabxcdxxefxgx', 'abcdefg'), 6);

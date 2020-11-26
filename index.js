@@ -27,14 +27,14 @@ module.exports = (function()
     var la = a.length;
     var lb = b.length;
 
-    while (la > 0 && (a.charCodeAt(la - 1) === b.charCodeAt(lb - 1))) {
+    while (la > 0 && (a[la - 1] === b[lb - 1])) {
       la--;
       lb--;
     }
 
     var offset = 0;
 
-    while (offset < la && (a.charCodeAt(offset) === b.charCodeAt(offset))) {
+    while (offset < la && (a[offset] === b[offset])) {
       offset++;
     }
 
@@ -63,16 +63,16 @@ module.exports = (function()
 
     for (y = 0; y < la; y++) {
       vector.push(y + 1);
-      vector.push(a.charCodeAt(offset + y));
+      vector.push(a[offset + y]);
     }
 
     var len = vector.length - 1;
 
     for (; x < lb - 3;) {
-      bx0 = b.charCodeAt(offset + (d0 = x));
-      bx1 = b.charCodeAt(offset + (d1 = x + 1));
-      bx2 = b.charCodeAt(offset + (d2 = x + 2));
-      bx3 = b.charCodeAt(offset + (d3 = x + 3));
+      bx0 = b[offset + (d0 = x)];
+      bx1 = b[(offset + (d1 = x + 1))];
+      bx2 = b[(offset + (d2 = x + 2))];
+      bx3 = b[(offset + (d3 = x + 3))];
       dd = (x += 4);
       for (y = 0; y < len; y += 2) {
         dy = vector[y];
@@ -90,7 +90,7 @@ module.exports = (function()
     }
 
     for (; x < lb;) {
-      bx0 = b.charCodeAt(offset + (d0 = x));
+      bx0 = b[(offset + (d0 = x))];
       dd = ++x;
       for (y = 0; y < len; y += 2) {
         dy = vector[y];
